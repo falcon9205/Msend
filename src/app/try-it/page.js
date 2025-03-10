@@ -8,6 +8,9 @@ import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import Image from "next/image";
 import { ScaleLoader } from "react-spinners";
 import useStore from "@/Store/UserStore";
+import toast, { Toaster } from 'react-hot-toast';
+import { GoCheckCircleFill } from "react-icons/go";
+import { IoCloseCircle } from "react-icons/io5";
 const templates = {
   Interview: {
     name: "Interview",
@@ -124,6 +127,39 @@ const templates = {
   },
 };
 
+const notify = () => toast('All mail sends Successfully!',
+  {
+    icon: <GoCheckCircleFill className="text-green-500"/>,
+    style: {
+      borderRadius: '10px',
+      background: '#fff',
+      color: '#333',
+    },
+  }
+);
+
+const error = () => toast('add at least one email before sending!',
+  {
+    icon: <IoCloseCircle className="text-red-500"/>,
+    style: {
+      borderRadius: '10px',
+      background: '#fff',
+      color: '#333',
+    },
+  }
+);
+
+const errormail = () => toast('Try again later!',
+  {
+    icon: <IoCloseCircle className="text-red-500"/>,
+    style: {
+      borderRadius: '10px',
+      background: '#fff',
+      color: '#333',
+    },
+  }
+);
+
 export default function MsendForm() {
   const [emails, setEmails] = useState([]);
   const [emailInput, setEmailInput] = useState("");
@@ -202,7 +238,7 @@ export default function MsendForm() {
   // sender api function
   const onSubmit = async (data) => {
     if (emails.length === 0) {
-      alert("Please add at least one email before sending.");
+      error()
       return;
     }
     const payload = {
@@ -229,12 +265,12 @@ export default function MsendForm() {
 
       const result = await response.json();
       console.log("Success:", result);
-      alert("Mail sent successfully!");
+      notify()
       
     } catch (error) {
       
       console.error("Error:", error);
-      alert("Error sending mail. Please try again.");
+      errormail()
     }
     finally{
       reset()
@@ -424,6 +460,9 @@ export default function MsendForm() {
           </div>
         </div>
       )}
+
+      <Toaster  position="bottom-center"
+        reverseOrder={false}/>
     </>
   );
 }
