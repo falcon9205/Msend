@@ -56,6 +56,16 @@ const Page = () => {
 
   return (
     <>
+      { (profileData.length < 1 && historyData.length <1 ) ? 
+      /* From Uiverse.io by sahilxkhadka */ 
+<div class="relative flex w-64 animate-pulse gap-2 p-4">
+  <div class="h-12 w-12 rounded-full bg-slate-400"></div>
+  <div class="flex-1">
+    <div class="mb-1 h-5 w-3/5 rounded-lg bg-slate-400 text-lg"></div>
+    <div class="h-5 w-[90%] rounded-lg bg-slate-400 text-sm"></div>
+  </div>
+  <div class="absolute bottom-5 right-0 h-4 w-4 rounded-full bg-slate-400"></div>
+</div> :
       <section className="md:mt-20 mt-36 px-[5%] pb-44">
         <div className="md:flex md:gap-x-10 space-y-10 md:space-y-0 items-center">
           {/* Personal Info Table */}
@@ -146,6 +156,7 @@ const Page = () => {
           </div>
         </div>
       </section>
+}
     </>
   );
 };

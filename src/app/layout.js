@@ -1,13 +1,13 @@
 import "./globals.css";
 import Login from "@/component/Login-Popup/login-popup.js";
-import { Quicksand } from "next/font/google";
+import { Montserrat, Quicksand } from "next/font/google";
 import SessionProviderWrapper from "@/component/SessionProviderWrapper"; // Import the wrapper
 import Header from "@/component/Header/header";
 import Footer from "@/component/Footer/footer";
 
-const font = Quicksand({
+const font = Montserrat({
   subsets: ["latin"],
-  weight: "600",
+  weight: "500",
 });
 
 export const metadata = {

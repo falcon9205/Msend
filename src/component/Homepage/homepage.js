@@ -28,6 +28,17 @@ const notify = () => toast('Please Login!',
   }
 );
 
+const errormail = () => toast('Try again later!',
+  {
+    icon: <IoCloseCircle className="text-red-500"/>,
+    style: {
+      borderRadius: '10px',
+      background: '#fff',
+      color: '#333',
+    },
+  }
+);
+
 const Premium = () =>toast('In Production',
   {
     icon: <IoCloseCircle className="text-red-500"/>,

@@ -1,7 +1,29 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-
+import toast, { Toaster } from 'react-hot-toast';
+import { GoCheckCircleFill } from "react-icons/go";
+import { IoCloseCircle } from "react-icons/io5";
+const notify = () => toast('Mail sends Successfully!',
+  {
+    icon: <GoCheckCircleFill className="text-green-500"/>,
+    style: {
+      borderRadius: '10px',
+      background: '#fff',
+      color: '#333',
+    },
+  }
+);
+const error = () => toast('add at least one email before sending!',
+  {
+    icon: <IoCloseCircle className="text-red-500"/>,
+    style: {
+      borderRadius: '10px',
+      background: '#fff',
+      color: '#333',
+    },
+  }
+);
 // Define Validation Schema using Zod
 const formSchema = z.object({
   fullName: z.string().min(3, "Full Name must be at least 3 characters"),
@@ -17,15 +39,30 @@ const formSchema = z.object({
 export default function ContactForm() {
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm({
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = (data) => {
-    console.log("Form Data:", data);
-    alert("Form submitted successfully!");
+  const onSubmit = async (data) => {
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        error()
+      }
+      reset()
+      notify()
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      error()
+    }
   };
 
   return (
@@ -93,6 +130,9 @@ export default function ContactForm() {
           {isSubmitting ? "Reachinggg..." : "Reach us out"}
         </button>
       </form>
+      <Toaster  position="bottom-center"
+        reverseOrder={false}/>
     </div>
+    
   );
 }

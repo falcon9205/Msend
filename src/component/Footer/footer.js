@@ -7,7 +7,8 @@ import { FaInstagram } from "react-icons/fa";
 import { FaWhatsapp } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
-const footer = () => {
+import Link from "next/link";
+const Footer = () => {
   
   useEffect(() => {
         AOS.init({
@@ -28,17 +29,17 @@ const footer = () => {
           <div className="text-white text-center md:text-left text-2xl md:text-3xl space-y-2">
             <h1>Connect with me</h1>
             <div className="flex gap-x-2 justify-center">
-              <IoIosMail className="border border-gray-600 text-yellow-400 hover:bg-gray-200 hover:text-black text-4xl rounded-full p-1 transition-all duration-700 ease-in-out" />
-              <FaInstagram className="border border-gray-600 text-yellow-400 hover:bg-gray-200 hover:text-black text-4xl rounded-full p-1 transition-all duration-700 ease-in-out" />
-              <FaLinkedinIn className="border border-gray-600 text-yellow-400 hover:bg-gray-200 hover:text-black text-4xl rounded-full p-1 transition-all duration-700 ease-in-out" />
-              <FaWhatsapp className="border border-gray-600 text-yellow-400 hover:bg-gray-200 hover:text-black text-4xl rounded-full p-1 transition-all duration-700 ease-in-out" />
+             <Link target="_blank" href="mailto:mauryahimanshu567@gmail.com?subject=Msend&body=Hey Himanshu,"> <IoIosMail className="border border-gray-600 text-yellow-400 hover:bg-gray-200 hover:text-black text-4xl rounded-full p-1 transition-all duration-700 ease-in-out" /></Link>
+             <Link target="_blank" href="https://www.instagram.com/yeahthatshemu/"> <FaInstagram className="border border-gray-600 text-yellow-400 hover:bg-gray-200 hover:text-black text-4xl rounded-full p-1 transition-all duration-700 ease-in-out" /></Link>
+             <Link target="_blank" href="https://www.linkedin.com/in/himanshu-maurya-7b5273190/"> <FaLinkedinIn className="border border-gray-600 text-yellow-400 hover:bg-gray-200 hover:text-black text-4xl rounded-full p-1 transition-all duration-700 ease-in-out" /></Link>
+             <Link target="_blank" href="https://api.whatsapp.com/send?phone=919205487164&text=Hi%20Himanshu%20%F0%9F%91%8B"> <FaWhatsapp className="border border-gray-600 text-yellow-400 hover:bg-gray-200 hover:text-black text-4xl rounded-full p-1 transition-all duration-700 ease-in-out" /></Link>
             </div>
           </div>
 
           <div className="text-white text-center md:text-left  text-2xl md:text-3xl space-y-2">
             <h1>Github Repo</h1>
             <div className="flex gap-x-2 justify-center">
-              <FaGithub className="border border-gray-600 text-yellow-400 hover:bg-gray-200 hover:text-black text-4xl rounded-full p-1 transition-all duration-700 ease-in-out" />
+              <Link target="_blank" href="https://github.com/falcon9205"><FaGithub className="border border-gray-600 text-yellow-400 hover:bg-gray-200 hover:text-black text-4xl rounded-full p-1 transition-all duration-700 ease-in-out" /></Link>
             </div>
           </div>
         </div>
@@ -52,4 +53,4 @@ const footer = () => {
   );
 };
 
-export default footer;
+export default Footer;
