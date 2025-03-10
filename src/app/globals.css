@@ -1,0 +1,21 @@
+@import "tailwindcss";
+body, html {
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(202, 200, 200);
+  
+}
+
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(114, 114, 114);
+}
+
+
